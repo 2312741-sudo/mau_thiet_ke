@@ -9,43 +9,71 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="vn.edu.dlu.dhopm.ui.controller.MainController"
-            prefHeight="800.0" prefWidth="1200.0" styleClass="root-pane">
+            prefHeight="880.0" prefWidth="1320.0" styleClass="root-pane">
 
-    <!-- TOP: HEADER BAR -->
+    <!-- TOP: HIGH-TECH ARCHITECTURAL HEADER BAR -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="header-bar">
+        <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="header-bar">
             <padding>
-                <Insets top="14.0" right="20.0" bottom="14.0" left="20.0"/>
+                <Insets top="12.0" right="20.0" bottom="12.0" left="20.0"/>
             </padding>
-            <VBox spacing="2.0">
-                <HBox alignment="CENTER_LEFT" spacing="8.0">
-                    <Label text="⚡ DHOPM Stream Visualizer" styleClass="app-title"/>
-                    <Label text="v1.0.0" styleClass="badge-version"/>
+            <VBox spacing="3.0">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="🚀 DHOPM Pattern Studio" styleClass="app-title"/>
+                    <Label text="GoF 10-Pattern Framework" styleClass="badge-version"/>
+                    <Label text="SOLID Compliant" styleClass="badge-solid"/>
                 </HBox>
-                <Label text="Khai phá mẫu có độ chiếm dụng cao trên luồng dữ liệu thời gian thực (EAAI 2026)" styleClass="app-subtitle"/>
+                <Label text="Khung Kiến Trúc 10 Mẫu Thiết Kế GoF Ứng Dụng Trong Khai Phá Dữ Liệu Luồng Thời Gian Thực (EAAI 2026)" styleClass="app-subtitle"/>
             </VBox>
             <Region HBox.hgrow="ALWAYS"/>
-            <HBox alignment="CENTER" spacing="10.0" styleClass="header-meta">
-                <Label text="Môn: Lập Trình Java Nâng Cao" styleClass="meta-tag"/>
-                <Label text="ĐH Đà Lạt" styleClass="meta-tag"/>
+            <HBox alignment="CENTER" spacing="8.0" styleClass="header-meta">
+                <Label text="ĐH Đà Lạt - Khoa CNTT" styleClass="meta-tag"/>
+                <Label text="Môn: Mẫu Thiết Kế (Design Patterns)" styleClass="meta-tag-highlight"/>
+                <Label text="SV: Nguyễn Thanh Tâm (2312741)" styleClass="meta-tag"/>
             </HBox>
         </HBox>
     </top>
 
-    <!-- LEFT: SIDEBAR CONTROLS -->
+    <!-- LEFT: SIDEBAR PATTERN CONTROLS MATRIX -->
     <left>
         <ScrollPane fitToWidth="true" styleClass="sidebar-scroll">
-            <VBox spacing="16.0" prefWidth="320.0" styleClass="sidebar">
+            <VBox spacing="14.0" prefWidth="350.0" styleClass="sidebar">
                 <padding>
-                    <Insets top="16.0" right="16.0" bottom="16.0" left="16.0"/>
+                    <Insets top="14.0" right="14.0" bottom="14.0" left="14.0"/>
                 </padding>
 
-                <!-- PANEL 1: THAM SO THUAT TOAN -->
-                <VBox spacing="12.0" styleClass="panel-card">
-                    <Label text="⚙️ THAM SỐ THUẬT TOÁN" styleClass="panel-title"/>
+                <!-- PANEL 1: FACTORY METHOD PATTERN -->
+                <VBox spacing="10.0" styleClass="panel-card-accent">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="🏭 NGUỒN DỮ LIỆU (FACTORY METHOD)" styleClass="panel-title-primary"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Factory" styleClass="tag-pattern"/>
+                    </HBox>
+
+                    <VBox spacing="4.0">
+                        <Label text="Chọn nguồn dữ liệu tạo bởi Factory:" styleClass="field-label"/>
+                        <ComboBox fx:id="comboDatasetFactory" maxWidth="Infinity" styleClass="combo-box-custom"/>
+                    </VBox>
+
+                    <Button fx:id="btnLoadDataset" text="⚡ Nạp dữ liệu qua Factory Method" maxWidth="Infinity" styleClass="btn-factory"/>
+                </VBox>
+
+                <!-- PANEL 2: STRATEGY PATTERN & BUILDER -->
+                <VBox spacing="10.0" styleClass="panel-card">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="🎯 CHIẾN LƯỢC KHAI PHÁ (STRATEGY)" styleClass="panel-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Strategy" styleClass="tag-pattern"/>
+                    </HBox>
+
+                    <!-- ComboBox Decay Strategy -->
+                    <VBox spacing="4.0">
+                        <Label text="Họ giải thuật suy giảm (DecayStrategy):" styleClass="field-label"/>
+                        <ComboBox fx:id="comboDecayStrategy" maxWidth="Infinity" styleClass="combo-box-custom"/>
+                    </VBox>
 
                     <!-- Slider f -->
-                    <VBox spacing="4.0">
+                    <VBox spacing="4.0" fx:id="boxDecayFactor">
                         <HBox alignment="CENTER_LEFT">
                             <Label text="Hệ số suy giảm (f):" styleClass="field-label"/>
                             <Region HBox.hgrow="ALWAYS"/>
@@ -53,7 +81,13 @@
                         </HBox>
                         <Slider fx:id="sliderF" min="0.5" max="1.0" value="0.9" blockIncrement="0.05"
                                 showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="1"/>
-                        <Label text="f nhỏ = ưu tiên dữ liệu mới; f=1.0 = không suy giảm" styleClass="help-text"/>
+                        <Label text="f nhỏ = ưu tiên dữ liệu mới; f=1.0 = Landmark (không suy giảm)" styleClass="help-text"/>
+                    </VBox>
+
+                    <!-- ComboBox Pruning Strategy -->
+                    <VBox spacing="4.0">
+                        <Label text="Họ giải thuật cắt tỉa (PruningStrategy):" styleClass="field-label"/>
+                        <ComboBox fx:id="comboPruningStrategy" maxWidth="Infinity" styleClass="combo-box-custom"/>
                     </VBox>
 
                     <!-- Slider minSup ratio -->
@@ -73,26 +107,64 @@
                     </VBox>
                 </VBox>
 
-                <!-- PANEL 2: DIEU KHIEN STREAM -->
-                <VBox spacing="12.0" styleClass="panel-card">
+                <!-- PANEL 3: STATE & COMMAND & MEMENTO PATTERN -->
+                <VBox spacing="10.0" styleClass="panel-card">
                     <HBox alignment="CENTER_LEFT">
-                        <Label text="📡 LUỒNG DỮ LIỆU (STREAM)" styleClass="panel-title"/>
+                        <Label text="🎮 ĐIỀU KHIỂN &amp; HOÀN TÁC (STATE / MEMENTO)" styleClass="panel-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Command &amp; Memento" styleClass="tag-pattern"/>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Trạng thái máy (State Pattern):" styleClass="field-label"/>
                         <Region HBox.hgrow="ALWAYS"/>
                         <Label fx:id="lblStreamStatus" text="Sẵn sàng" styleClass="status-badge"/>
                     </HBox>
 
+                    <!-- Start & Pause buttons -->
                     <HBox spacing="8.0">
-                        <Button fx:id="btnStartStream" text="▶ Bắt đầu" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="btn-primary"/>
+                        <Button fx:id="btnStartStream" text="▶ Chạy luồng" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="btn-primary"/>
                         <Button fx:id="btnPauseStream" text="⏸ Tạm dừng" disable="true" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="btn-warning"/>
                     </HBox>
 
-                    <Button fx:id="btnStepStream" text="➕ Bơm từng giao dịch (Step Next)" maxWidth="Infinity" styleClass="btn-secondary"/>
-                    <Button fx:id="btnReset" text="🔄 Khôi phục 8 giao dịch gốc" maxWidth="Infinity" styleClass="btn-outline"/>
+                    <!-- Step, Undo & Redo buttons -->
+                    <HBox spacing="6.0">
+                        <Button fx:id="btnStepStream" text="➕ Bơm 1 GD" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="btn-secondary"/>
+                        <Button fx:id="btnUndo" text="↩ Undo" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="btn-undo"/>
+                        <Button fx:id="btnRedo" text="↪ Redo" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="btn-redo"/>
+                    </HBox>
+
+                    <Button fx:id="btnReset" text="🔄 Khôi phục ban đầu (ResetCommand)" maxWidth="Infinity" styleClass="btn-outline"/>
+
+                    <!-- Memento Stack Counter -->
+                    <HBox alignment="CENTER" styleClass="stack-indicator-row">
+                        <Label fx:id="lblUndoStackInfo" text="Memento Stack: 0 snapshot" styleClass="stack-indicator-text"/>
+                    </HBox>
                 </VBox>
 
-                <!-- PANEL 3: THONG KE THOI GIAN THUC -->
-                <VBox spacing="10.0" styleClass="panel-card">
-                    <Label text="📊 THỐNG KÊ THỰC THI" styleClass="panel-title"/>
+                <!-- PANEL 4: DECORATOR PATTERN & BENCHMARK PROFILER -->
+                <VBox spacing="8.0" styleClass="panel-card">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="⏱️ ĐO LƯỜNG HIỆU NĂNG (DECORATOR)" styleClass="panel-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Decorator" styleClass="tag-pattern"/>
+                    </HBox>
+
+                    <HBox alignment="CENTER" styleClass="pipeline-badge-box">
+                        <Label text="LoggingDecorator ➔ BenchmarkDecorator ➔ CoreMiner" styleClass="pipeline-badge-text"/>
+                    </HBox>
+
+                    <HBox styleClass="stat-row">
+                        <Label text="Thời gian chạy (Decorator):" styleClass="stat-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblBenchmarkTime" text="-- µs" styleClass="stat-number-purple"/>
+                    </HBox>
+
+                    <HBox styleClass="stat-row">
+                        <Label text="RAM Heap tiêu thụ (Decorator):" styleClass="stat-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblBenchmarkMemory" text="-- KB" styleClass="stat-number"/>
+                    </HBox>
 
                     <HBox styleClass="stat-row">
                         <Label text="TID mới nhất (TL):" styleClass="stat-label"/>
@@ -101,7 +173,7 @@
                     </HBox>
 
                     <HBox styleClass="stat-row">
-                        <Label text="Tổng số giao dịch:" styleClass="stat-label"/>
+                        <Label text="Tổng số giao dịch đã quét:" styleClass="stat-label"/>
                         <Region HBox.hgrow="ALWAYS"/>
                         <Label fx:id="lblTransCount" text="8" styleClass="stat-number"/>
                     </HBox>
@@ -113,7 +185,7 @@
                     </HBox>
 
                     <HBox styleClass="stat-row">
-                        <Label text="Tổng mẫu duyệt qua:" styleClass="stat-label"/>
+                        <Label text="Tổng mẫu duyệt qua (DFS):" styleClass="stat-label"/>
                         <Region HBox.hgrow="ALWAYS"/>
                         <Label fx:id="lblVisitedCount" text="32 mẫu" styleClass="stat-number"/>
                     </HBox>
@@ -132,15 +204,17 @@
     <center>
         <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="main-tab-pane">
             <!-- TAB 1: DHO-LIST NODES -->
-            <Tab text="🗂️ Global DHO-List Nodes">
+            <Tab text="🗂️ Global DHO-List Nodes (One-Scan)">
                 <VBox spacing="12.0">
                     <padding>
                         <Insets top="14.0" right="16.0" bottom="14.0" left="16.0"/>
                     </padding>
 
-                    <HBox alignment="CENTER_LEFT" spacing="8.0" styleClass="order-banner">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="order-banner">
                         <Label text="Thứ tự xử lý (Support tăng dần):" styleClass="order-title"/>
                         <Label fx:id="lblSortOrder" text="G ≺ B ≺ A ≺ C ≺ D ≺ E ≺ F" styleClass="order-content"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Template Method: Step 3" styleClass="tag-pattern-sm"/>
                     </HBox>
 
                     <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="content-scroll">
@@ -154,11 +228,17 @@
             </Tab>
 
             <!-- TAB 2: MINING RESULTS TABLE -->
-            <Tab text="📋 Chi Tiết Mẫu &amp; Khai Phá (DFS Tree)">
+            <Tab text="📋 Chi Tiết Mẫu DHOP &amp; DFS Tree">
                 <VBox spacing="12.0">
                     <padding>
                         <Insets top="14.0" right="16.0" bottom="14.0" left="16.0"/>
                     </padding>
+
+                    <HBox alignment="CENTER_LEFT" spacing="8.0" styleClass="order-banner">
+                        <Label text="Bảng kết quả duyệt không gian DFS kết hợp cắt tỉa DUBO:" styleClass="order-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Template Method: Step 4" styleClass="tag-pattern-sm"/>
+                    </HBox>
 
                     <TableView fx:id="tableResults" VBox.vgrow="ALWAYS" styleClass="results-table">
                         <columns>
@@ -177,7 +257,7 @@
             </Tab>
 
             <!-- TAB 3: LINE CHART -->
-            <Tab text="📈 Biểu Đồ Điểm Số DO &amp; Ngưỡng">
+            <Tab text="📈 Biểu Đồ Trực Quan DO &amp; Ngưỡng">
                 <VBox spacing="12.0">
                     <padding>
                         <Insets top="14.0" right="16.0" bottom="14.0" left="16.0"/>
@@ -191,6 +271,73 @@
                             <NumberAxis label="Giá trị DO"/>
                         </yAxis>
                     </LineChart>
+                </VBox>
+            </Tab>
+
+            <!-- TAB 4: GOF PATTERN STUDIO & MEMENTO INSPECTOR -->
+            <Tab text="🏛️ GoF Pattern Studio &amp; Memento Inspector">
+                <VBox spacing="14.0">
+                    <padding>
+                        <Insets top="14.0" right="16.0" bottom="14.0" left="16.0"/>
+                    </padding>
+
+                    <!-- TOP: TEMPLATE METHOD 5-STEP PIPELINE CARD -->
+                    <VBox spacing="8.0" styleClass="panel-card-accent">
+                        <HBox alignment="CENTER_LEFT" spacing="8.0">
+                            <Label text="Khung Xương 5 Bước Chuẩn Hóa (Template Method Pattern):" styleClass="panel-title-primary"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="AbstractStreamMiner.processBatchAndMine()" styleClass="tag-pattern-sm"/>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="10.0" styleClass="stepper-box">
+                            <VBox alignment="CENTER" styleClass="step-node-active">
+                                <Label text="BƯỚC 1" styleClass="step-num"/>
+                                <Label text="validateBatch" styleClass="step-text"/>
+                            </VBox>
+                            <Label text="➔" styleClass="step-arrow"/>
+                            <VBox alignment="CENTER" styleClass="step-node-active">
+                                <Label text="BƯỚC 2" styleClass="step-num"/>
+                                <Label text="updateStructure" styleClass="step-text"/>
+                            </VBox>
+                            <Label text="➔" styleClass="step-arrow"/>
+                            <VBox alignment="CENTER" styleClass="step-node-active">
+                                <Label text="BƯỚC 3" styleClass="step-num"/>
+                                <Label text="calculateBounds" styleClass="step-text"/>
+                            </VBox>
+                            <Label text="➔" styleClass="step-arrow"/>
+                            <VBox alignment="CENTER" styleClass="step-node-active">
+                                <Label text="BƯỚC 4" styleClass="step-num"/>
+                                <Label text="minePatterns (DFS)" styleClass="step-text"/>
+                            </VBox>
+                            <Label text="➔" styleClass="step-arrow"/>
+                            <VBox alignment="CENTER" styleClass="step-node-active">
+                                <Label text="BƯỚC 5" styleClass="step-num"/>
+                                <Label text="notifyObservers" styleClass="step-text"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- BOTTOM: SPLITPANE FOR MEMENTO STACK & AUDIT OBSERVER LOG -->
+                    <SplitPane dividerPositions="0.4" VBox.vgrow="ALWAYS" styleClass="pattern-split-pane">
+                        <!-- LEFT: MEMENTO SNAPSHOT STACK -->
+                        <VBox spacing="8.0">
+                            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                <Label text="Ngăn Xếp Snapshot (Memento Stack):" styleClass="field-label-bold"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="Command &amp; Memento" styleClass="tag-pattern-sm"/>
+                            </HBox>
+                            <ListView fx:id="listMementoSnapshots" VBox.vgrow="ALWAYS" styleClass="memento-list-view"/>
+                        </VBox>
+
+                        <!-- RIGHT: OBSERVER AUDIT TRAIL LOG -->
+                        <VBox spacing="8.0">
+                            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                <Label text="Nhật Ký Kiểm Toán Thời Gian Thực (Observer Pattern):" styleClass="field-label-bold"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button fx:id="btnClearAuditLogs" text="Xóa nhật ký" styleClass="btn-outline-sm"/>
+                            </HBox>
+                            <ListView fx:id="listAuditLogs" VBox.vgrow="ALWAYS" styleClass="audit-list-view"/>
+                        </VBox>
+                    </SplitPane>
                 </VBox>
             </Tab>
         </TabPane>

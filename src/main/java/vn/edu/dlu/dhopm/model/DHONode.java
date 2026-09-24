@@ -25,6 +25,16 @@ public class DHONode {
         this.entries = new ArrayList<>();
     }
 
+    /**
+     * Copy constructor de sao chep sau trang thai DHONode phuc vu Memento Pattern.
+     */
+    public DHONode(DHONode other) {
+        this.itemName = other.itemName;
+        this.doValue = other.doValue;
+        this.support = other.support;
+        this.entries = new ArrayList<>(other.entries);
+    }
+
     public void addEntry(int tid, int tlen) {
         addEntry(new Entry(tid, tlen));
     }

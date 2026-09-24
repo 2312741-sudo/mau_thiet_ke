@@ -96,6 +96,10 @@ public class StreamSimulator {
         return nextIndex;
     }
 
+    public synchronized void setProcessedCount(int count) {
+        this.nextIndex = Math.max(0, Math.min(count, pendingStream.size()));
+    }
+
     public int getTotalCount() {
         return pendingStream.size();
     }

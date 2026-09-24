@@ -234,6 +234,10 @@ public class DHOPMEngine {
         return Collections.unmodifiableList(allTransactions);
     }
 
+    public List<Transaction> getRawTransactions() {
+        return allTransactions;
+    }
+
     public int getCurrentTL() {
         return currentTL;
     }
@@ -250,5 +254,35 @@ public class DHOPMEngine {
         globalList.clear();
         allTransactions.clear();
         currentTL = 0;
+    }
+
+    /**
+     * Memento Pattern: Tao anh chup nhanh trang thai hien tai cua Engine.
+     */
+    public synchronized vn.edu.dlu.dhopm.pattern.memento.DHOListMemento createMemento(int streamNextIndex) {
+        return globalList.saveToMemento(currentTL, allTransactions, streamNextIndex);
+    }
+
+    /**
+     * Memento Pattern: Khoi phuc trang thai Engine tu anh chup nhanh.
+     */
+    public synchronized void restoreFromMemento(vn.edu.dlu.dhopm.pattern.memento.DHOListMemento memento) {
+        if (memento == null) return;
+        this.globalList.restoreFromMemento(memento);
+        this.allTransactions.clear();
+        this.allTransactions.addAll(memento.getSavedTransactions());
+        this.currentTL = memento.getSavedTL();
+    }
+
+    /**
+     * Strategy Pattern: Tai cau truc Global DHO-List theo DecayStrategy.
+     */
+    public synchronized void phase2_reconstruct(vn.edu.dlu.dhopm.pattern.strategy.DecayStrategy strategy, int TL) {
+        if (strategy == null) {
+            throw new IllegalArgumentException("DecayStrategy must not be null");
+        }
+        this.currentF = strategy.getParameter();
+        this.currentTL = TL;
+        globalList.reconstruct(strategy, TL);
     }
 }

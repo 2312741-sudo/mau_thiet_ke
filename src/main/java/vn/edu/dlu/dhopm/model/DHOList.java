@@ -1,12 +1,24 @@
 package vn.edu.dlu.dhopm.model;
 
+import vn.edu.dlu.dhopm.pattern.memento.DHOListMemento;
+import vn.edu.dlu.dhopm.pattern.strategy.DampedExponentialDecay;
+import vn.edu.dlu.dhopm.pattern.strategy.DecayStrategy;
+
 import java.util.*;
 
 /**
- * Cau truc Global DHO-List quan ly cac node cua cac item trong toan bo CSDL.
- * Cung cap 2 tien trinh co ban:
- * 1. constructOrUpdate: Quet mot lan duy nhat de chen cac entry <TID, TLen>
- * 2. reconstruct: Tinh lai DO theo TL va he so suy giam f, sap xep theo Support tang dan
+ * Cấu trúc Global DHO-List quản lý các node của các item trong toàn bộ CSDL.
+ *
+ * <p>Đóng vai trò là <b>Originator</b> trong <b>Memento Pattern (GoF)</b>:
+ * Có khả năng tạo ra bản sao trạng thái nội bộ ({@link DHOListMemento})
+ * và phục hồi nguyên vẹn trạng thái từ Memento đó.</p>
+ *
+ * <p>Cung cấp 2 tiến trình cơ bản:
+ * 1. constructOrUpdate: Quét một lần duy nhất (One-scan) để chèn các entry &lt;TID, TLen&gt;
+ * 2. reconstruct: Tính lại DO theo TL và DecayStrategy, sắp xếp theo Support tăng dần
+ * </p>
+ *
+ * @author Nguyen Thanh Tam - MSSV: 2312741
  */
 public class DHOList {
     private final Map<String, DHONode> nodeMap;
@@ -18,11 +30,12 @@ public class DHOList {
     }
 
     /**
-     * Pha 1: Xay dung hoac cap nhat Global DHO-List bang cach quet 1 lan cac giao dich moi.
+     * Pha 1: Xây dựng hoặc cập nhật Global DHO-List bằng cách quét 1 lần các giao dịch mới.
      *
-     * @param transactions Danh sach cac giao dich can nap (DB0 hoac cac phan gia tang DB1, DB2, ...)
+     * @param transactions Danh sách các giao dịch cần nạp (DB0 hoặc các phần gia tăng DB1, DB2, ...)
      */
     public void constructOrUpdate(List<Transaction> transactions) {
+        if (transactions == null) return;
         for (Transaction t : transactions) {
             int tid = t.getTid();
             int tlen = t.getLength();
@@ -35,29 +48,76 @@ public class DHOList {
     }
 
     /**
-     * Pha 2: Tai cau truc Global DHO-List khi co yeu cau khai pha.
-     * - Tinh toan lai damped occupancy (DO) cho tung node dua tren TL va f
-     * - Sap xep cac node theo thu tu Support TANG DAN (de uu tien cat tia som bang DUBO)
+     * Pha 2: Tái cấu trúc Global DHO-List với DecayStrategy (Strategy Pattern).
      *
-     * @param f  He so suy giam (0 < f < 1)
-     * @param TL Ma dinh danh giao dich moi nhat da quet
+     * @param strategy Chiến lược suy giảm trọng số (Damped, Landmark, Linear)
+     * @param TL       Mã định danh giao dịch mới nhất đã quét
      */
-    public void reconstruct(double f, int TL) {
-        // 1. Tinh lai DO cho tung node
+    public void reconstruct(DecayStrategy strategy, int TL) {
+        if (strategy == null) {
+            throw new IllegalArgumentException("DecayStrategy không được phép null");
+        }
+
+        // 1. Tính lại DO cho từng node
         for (DHONode node : nodeMap.values()) {
             node.resetDO();
             for (Entry entry : node.getEntries()) {
                 double occupancy = 1.0 / entry.tlen();
-                double decay = Math.pow(f, TL - entry.tid());
+                double decay = strategy.calculateDecay(entry.tid(), TL);
                 node.accumulateDO(occupancy * decay);
             }
         }
 
-        // 2. Sap xep theo Support tang dan
+        // 2. Sắp xếp theo Support tăng dần (nếu bằng thì so sánh theo tên item)
         sortedNodes.clear();
         sortedNodes.addAll(nodeMap.values());
         sortedNodes.sort(Comparator.comparingInt(DHONode::getSupport)
                 .thenComparing(DHONode::getItemName));
+    }
+
+    /**
+     * Pha 2 (Tương thích ngược): Tái cấu trúc Global DHO-List theo hệ số f của bài báo gốc.
+     *
+     * @param f  Hệ số suy giảm (0 &lt; f &le; 1)
+     * @param TL Mã định danh giao dịch mới nhất đã quét
+     */
+    public void reconstruct(double f, int TL) {
+        if (!Double.isFinite(f) || f <= 0.0 || f > 1.0) {
+            throw new IllegalArgumentException("Decay factor f must be in (0, 1]");
+        }
+        reconstruct(new DampedExponentialDecay(f), TL);
+    }
+
+    /**
+     * Memento Pattern: Lưu lại ảnh chụp nhanh trạng thái nội bộ.
+     *
+     * @param currentTL        Mã thời gian TL hiện tại
+     * @param allTransactions  Toàn bộ danh sách giao dịch
+     * @param streamNextIndex  Chỉ số tiếp theo của bộ mô phỏng luồng
+     * @return DHOListMemento lưu trữ trạng thái bất biến
+     */
+    public DHOListMemento saveToMemento(int currentTL, List<Transaction> allTransactions, int streamNextIndex) {
+        return new DHOListMemento(nodeMap, sortedNodes, currentTL, allTransactions, streamNextIndex);
+    }
+
+    /**
+     * Memento Pattern: Khôi phục lại trạng thái nội bộ từ ảnh chụp nhanh.
+     *
+     * @param memento Đối tượng snapshot chứa trạng thái trước đó
+     */
+    public void restoreFromMemento(DHOListMemento memento) {
+        if (memento == null) return;
+
+        this.nodeMap.clear();
+        this.nodeMap.putAll(memento.getSavedNodeMap());
+
+        this.sortedNodes.clear();
+        for (String itemName : memento.getSavedSortedItemNames()) {
+            DHONode node = this.nodeMap.get(itemName);
+            if (node != null) {
+                this.sortedNodes.add(node);
+            }
+        }
     }
 
     public DHONode getNode(String item) {
