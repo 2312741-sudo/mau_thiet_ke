@@ -5,6 +5,7 @@ import vn.edu.dlu.dhopm.model.Transaction;
 import vn.edu.dlu.dhopm.pattern.builder.MiningConfig;
 import vn.edu.dlu.dhopm.pattern.template.MiningCycleResult;
 
+import java.lang.management.ManagementFactory;
 import java.util.List;
 
 /**
@@ -12,7 +13,10 @@ import java.util.List;
  *
  * <p>Áp dụng <b>Decorator Pattern (GoF)</b>:
  * Đo lường chính xác thời gian thực thi (nanoseconds / microseconds)
- * và lượng bộ nhớ Heap RAM biến thiên mà không can thiệp hay sửa đổi logic giải thuật lõi.</p>
+ * và lượng bộ nhớ Heap RAM tiêu thụ mà không can thiệp hay sửa đổi logic giải thuật lõi.</p>
+ *
+ * <p>Sử dụng <b>ThreadMXBean (JVM Management)</b> để đo chính xác từng byte RAM được cấp phát
+ * (Thread Allocated Memory / TLAB), khắc phục hoàn toàn nhược điểm Runtime.freeMemory() bị làm tròn.</p>
  *
  * <p>Tuân thủ <b>Single Responsibility Principle (SRP)</b>:
  * Tách biệt hoàn toàn trách nhiệm đo lường số liệu ra khỏi trách nhiệm tính toán thuật toán.</p>
@@ -20,6 +24,24 @@ import java.util.List;
  * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class BenchmarkMinerDecorator extends AbstractMinerDecorator {
+
+    private static final com.sun.management.ThreadMXBean THREAD_MX_BEAN;
+    private static final boolean THREAD_ALLOC_SUPPORTED;
+
+    static {
+        com.sun.management.ThreadMXBean sunBean = null;
+        boolean supported = false;
+        try {
+            java.lang.management.ThreadMXBean bean = ManagementFactory.getThreadMXBean();
+            if (bean instanceof com.sun.management.ThreadMXBean sb && sb.isThreadAllocatedMemorySupported()) {
+                sunBean = sb;
+                supported = true;
+            }
+        } catch (Throwable ignored) {
+        }
+        THREAD_MX_BEAN = sunBean;
+        THREAD_ALLOC_SUPPORTED = supported;
+    }
 
     private long lastExecutionTimeNs = 0;
     private long lastMemoryUsedBytes = 0;
@@ -31,15 +53,29 @@ public class BenchmarkMinerDecorator extends AbstractMinerDecorator {
         super(wrappedMiner);
     }
 
+    /**
+     * Đo lường chính xác lượng bộ nhớ Heap được cấp phát bởi luồng hiện tại (Thread Allocated Memory).
+     */
+    public static long getThreadAllocatedBytes() {
+        if (THREAD_ALLOC_SUPPORTED && THREAD_MX_BEAN != null) {
+            try {
+                return THREAD_MX_BEAN.getCurrentThreadAllocatedBytes();
+            } catch (Throwable ignored) {
+            }
+        }
+        Runtime rt = Runtime.getRuntime();
+        return rt.totalMemory() - rt.freeMemory();
+    }
+
     @Override
     public MiningCycleResult processBatchAndMine(List<Transaction> batch, MiningConfig config) {
-        long startMem = getHeapMemoryUsed();
+        long startMem = getThreadAllocatedBytes();
         long startNs = System.nanoTime();
 
         MiningCycleResult result = super.processBatchAndMine(batch, config);
 
         long elapsedNs = System.nanoTime() - startNs;
-        long endMem = getHeapMemoryUsed();
+        long endMem = getThreadAllocatedBytes();
         long memUsed = Math.max(0, endMem - startMem);
 
         recordBenchmark(elapsedNs, memUsed);
@@ -57,13 +93,13 @@ public class BenchmarkMinerDecorator extends AbstractMinerDecorator {
 
     @Override
     public List<PatternResult> mine(MiningConfig config) {
-        long startMem = getHeapMemoryUsed();
+        long startMem = getThreadAllocatedBytes();
         long startNs = System.nanoTime();
 
         List<PatternResult> results = super.mine(config);
 
         long elapsedNs = System.nanoTime() - startNs;
-        long endMem = getHeapMemoryUsed();
+        long endMem = getThreadAllocatedBytes();
         long memUsed = Math.max(0, endMem - startMem);
 
         recordBenchmark(elapsedNs, memUsed);

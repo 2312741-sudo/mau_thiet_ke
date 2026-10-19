@@ -250,9 +250,6 @@ public class StreamMiningFacade implements StreamStateContext {
     // =========================================================================
 
     public synchronized MiningCycleResult recalculateAndMine() {
-        long startNs = System.nanoTime();
-        long startMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-
         int TL = engine.getCurrentTL();
         double minSup = currentConfig.resolveAbsoluteMinSup(engine.getAllTransactions().size());
 
@@ -260,12 +257,11 @@ public class StreamMiningFacade implements StreamStateContext {
         engine.phase2_reconstruct(currentConfig.getDecayStrategy(), TL);
         baseMiner.setCurrentTL(TL);
 
-        // 2. Khai phá thông qua Decorator Pipeline
+        // 2. Khai phá thông qua Decorator Pipeline (Logging -> Benchmark -> Base)
         List<PatternResult> results = loggingDecorator.mine(currentConfig);
 
-        long elapsedNs = System.nanoTime() - startNs;
-        long endMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        long memUsed = Math.max(0, endMem - startMem);
+        long elapsedNs = benchmarkDecorator.getLastExecutionTimeNs();
+        long memUsed = benchmarkDecorator.getLastMemoryUsedBytes();
 
         List<PatternResult> dhops = results.stream().filter(PatternResult::isDHOP).toList();
         MiningCycleResult cycleResult = new MiningCycleResult(

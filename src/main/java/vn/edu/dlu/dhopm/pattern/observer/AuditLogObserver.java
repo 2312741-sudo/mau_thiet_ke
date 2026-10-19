@@ -29,12 +29,13 @@ public class AuditLogObserver implements StreamObserver, MiningObserver {
 
     @Override
     public synchronized void onMiningCompleted(MiningCycleResult result) {
-        String log = String.format("[%s] [MINING-AUDIT] Hoàn tất khai phá: TL=T%d | Duyệt %d mẫu | DHOPs=%d | Cắt tỉa=%.1f%% | Thời gian=%.3f ms",
+        String log = String.format("[%s] [MINING-AUDIT] Hoàn tất khai phá: TL=T%d | Duyệt %d mẫu | DHOPs=%d | Cắt tỉa=%.1f%% | RAM=%.1f KB | Thời gian=%.3f ms",
                 LocalDateTime.now().format(FORMATTER),
                 result.currentTL(),
                 result.allVisitedPatterns().size(),
                 result.dhopPatterns().size(),
                 result.getPruningRatio(),
+                result.getMemoryUsedKb(),
                 result.getExecutionTimeMs());
         logEntries.add(log);
         System.out.println(log);

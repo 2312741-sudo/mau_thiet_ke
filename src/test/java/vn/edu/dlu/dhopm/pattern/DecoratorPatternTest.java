@@ -50,7 +50,9 @@ public class DecoratorPatternTest {
         assertTrue(BenchmarkMinerDecorator.getCurrentHeapMemoryBytes() > 0, "Dung lượng heap bytes phải > 0");
         assertTrue(benchmarkDecorator.getCurrentHeapMemoryMb() > 0.0, "Dung lượng heap MB phải > 0");
         assertTrue(benchmarkDecorator.getTotalHeapMemoryMb() > 0.0, "Tổng heap MB phải > 0");
-        assertTrue(benchmarkDecorator.getPeakMemoryKb() >= 0.0, "Đỉnh RAM chu kỳ phải >= 0");
+        assertTrue(benchmarkDecorator.getLastMemoryUsedBytes() > 0, "Lượng RAM cấp phát đo bởi decorator phải > 0");
+        assertTrue(benchmarkDecorator.getLastMemoryUsedKb() > 0.0, "Lượng RAM cấp phát (KB) phải > 0");
+        assertTrue(benchmarkDecorator.getPeakMemoryKb() > 0.0, "Đỉnh RAM chu kỳ phải > 0");
     }
 
     @Test
