@@ -7,7 +7,7 @@ package vn.edu.dlu.dhopm.pattern.state;
  * Vô hiệu hóa nút Bắt đầu, Bước tiếp theo và Khôi phục để tránh tương tranh dữ liệu.
  * Chỉ cho phép bấm nút Tạm dừng (Pause).</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class RunningState implements StreamState {
 

@@ -7,7 +7,7 @@ package vn.edu.dlu.dhopm.pattern.state;
  * Giúp loại bỏ hoàn toàn các cấu trúc rẽ nhánh if-else phức tạp để kiểm tra cờ (flags)
  * và tự động điều khiển trạng thái bật/tắt (enabled/disabled) của các nút bấm trên giao diện người dùng.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public interface StreamState {
 

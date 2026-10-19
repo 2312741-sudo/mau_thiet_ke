@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Concrete Creator nạp tập dữ liệu kiểm thử tùy biến TC7_Custom (10 giao dịch) từ Lab 1.
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class CustomLab1DatasetFactory extends DatasetLoaderFactory {
 

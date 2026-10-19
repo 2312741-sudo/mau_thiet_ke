@@ -1,7 +1,10 @@
 # ⚡ DHOPM Stream Visualizer • Design Patterns Studio
 > **Đồ Án Môn Học:** Mẫu Thiết Kế (Design Patterns)  
 > **Trường:** Đại Học Đà Lạt (DLU) - Khoa Công Nghệ Thông Tin  
-> **Sinh viên thực hiện:** Nguyễn Thanh Tâm (MSSV: 2312741)  
+> **Nhóm sinh viên thực hiện:**
+> - Võ Công Vinh (MSSV: 2312800)
+> - Nguyễn Đức Tín (MSSV: 2312774)
+> - Ngô Quốc Trường Vĩ (MSSV: 2312796)  
 > **Dựa trên bài báo khoa học:** *"Damped window based high occupancy pattern mining with one scanning of data streams"*, Engineering Applications of Artificial Intelligence (EAAI), Vol. 174, 2026. DOI: [10.1016/j.engappai.2026.114511](https://doi.org/10.1016/j.engappai.2026.114511)
 
 ---

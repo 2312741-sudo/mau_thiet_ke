@@ -10,7 +10,7 @@ package vn.edu.dlu.dhopm.pattern.strategy;
  *   <li>(TL - tid): Khoảng cách thời gian giao dịch so với giao dịch hiện tại</li>
  * </ul>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class DampedExponentialDecay implements DecayStrategy {
 

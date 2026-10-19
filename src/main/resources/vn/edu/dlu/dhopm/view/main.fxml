@@ -29,7 +29,7 @@
             <HBox alignment="CENTER" spacing="8.0" styleClass="header-meta">
                 <Label text="ĐH Đà Lạt - Khoa CNTT" styleClass="meta-tag"/>
                 <Label text="Môn: Mẫu Thiết Kế (Design Patterns)" styleClass="meta-tag-highlight"/>
-                <Label text="SV: Nguyễn Thanh Tâm (2312741)" styleClass="meta-tag"/>
+                <Label text="Nhóm SV: Võ Công Vinh (2312800) • Nguyễn Đức Tín (2312774) • Ngô Quốc Trường Vĩ (2312796)" styleClass="meta-tag"/>
             </HBox>
         </HBox>
     </top>

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * - Ket qua tinh toan chay tay trong Lab 1 (DHOPM_TestCases.xlsx)
  * - Ket qua chuong trinh Java chay thuc te trong Lab 2
  *
- * Sinh vien: Nguyen Thanh Tam - MSSV: 2312741
+ * Sinh vien: Vo Cong Vinh (2312800), Nguyen Duc Tin (2312774), Ngo Quoc Truong Vi (2312796)
  * Lop: Lập Trình Java Nâng Cao - Truong Dai Hoc Da Lat (DLU)
  */
 public class Lab1VerificationRunner {
@@ -21,7 +21,7 @@ public class Lab1VerificationRunner {
         System.out.println("          TRƯỜNG ĐẠI HỌC ĐÀ LẠT - KHOA CÔNG NGHỆ THÔNG TIN");
         System.out.println("          MÔN HỌC: LẬP TRÌNH JAVA NÂNG CAO");
         System.out.println("          BÁO CÁO THỰC NGHIỆM BÀI THỰC HÀNH 02 (LAB 2)");
-        System.out.println("          Sinh viên: Nguyễn Thanh Tâm | MSSV: 2312741");
+        System.out.println("          Nhóm SV: Võ Công Vinh (2312800) | Nguyễn Đức Tín (2312774) | Ngô Quốc Trường Vĩ (2312796)");
         System.out.println("==========================================================================================");
         System.out.println();
 

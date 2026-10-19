@@ -20,7 +20,7 @@ import java.util.*;
  * tích hợp linh hoạt <b>Strategy Pattern</b> cho hàm suy giảm (DecayStrategy)
  * và kỹ thuật cắt tỉa nhánh (PruningStrategy).</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class DefaultStreamMiner extends AbstractStreamMiner {
 

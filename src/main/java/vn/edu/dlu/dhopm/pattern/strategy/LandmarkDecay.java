@@ -8,7 +8,7 @@ package vn.edu.dlu.dhopm.pattern.strategy;
  *
  * <p>Công thức: <b>w(tid, TL) = 1.0</b></p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class LandmarkDecay implements DecayStrategy {
 

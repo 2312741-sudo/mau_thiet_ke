@@ -14,7 +14,7 @@ import java.util.*;
  * <p>Đặc tính: Bất biến (Immutable) đối với các đối tượng bên ngoài (Caretaker),
  * chỉ có Originator (DHOList / Engine) mới có quyền truy cập và giải nén trạng thái để khôi phục.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public final class DHOListMemento {
 

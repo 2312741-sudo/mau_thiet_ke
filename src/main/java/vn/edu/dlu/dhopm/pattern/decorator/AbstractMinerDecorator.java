@@ -15,7 +15,7 @@ import java.util.Objects;
  * <p>Duy trì một tham chiếu đến đối tượng {@link StreamMiner} được trang trí (Component)
  * và ủy quyền mặc định tất cả các lời gọi hàm cho đối tượng đó.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public abstract class AbstractMinerDecorator implements StreamMiner {
 

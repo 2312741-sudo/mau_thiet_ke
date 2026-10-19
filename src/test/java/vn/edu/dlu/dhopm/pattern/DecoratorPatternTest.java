@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 2. LoggingMinerDecorator ghi nhận nhật ký kiểm toán mà không xâm phạm logic thuật toán lõi
  * 3. Khả năng xếp chồng (Chaining) linh hoạt các Decorators quanh đối tượng StreamMiner</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class DecoratorPatternTest {
 

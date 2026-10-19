@@ -8,7 +8,7 @@ import vn.edu.dlu.dhopm.pattern.template.MiningCycleResult;
  * <p>Áp dụng <b>Observer Pattern (GoF)</b>:
  * Cho phép đăng ký không giới hạn các module quan sát kết quả khai phá mà không làm biến đổi mã nguồn thuật toán.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public interface MiningObserver {
 

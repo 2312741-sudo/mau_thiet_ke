@@ -23,7 +23,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * </ol>
  * </p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public abstract class AbstractStreamMiner implements StreamMiner {
 

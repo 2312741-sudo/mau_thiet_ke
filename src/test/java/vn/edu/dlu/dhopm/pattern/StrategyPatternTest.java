@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 4. Tính năng cắt tỉa DUBO Upper Bound vs No Pruning
  * 5. Khả năng hoán đổi chiến lược tại runtime mà không sửa đổi thuật toán lõi</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class StrategyPatternTest {
 

@@ -7,7 +7,7 @@ package vn.edu.dlu.dhopm.pattern.strategy;
  * Cho phép linh hoạt lựa chọn hoặc hoán đổi giữa việc sử dụng cận trên chặt DUBO
  * và việc duyệt toàn bộ không gian (không cắt tỉa) để đo lường hiệu năng thực tế.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public interface PruningStrategy {
 

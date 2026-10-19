@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * <p>Vẫn hỗ trợ hoàn tác Undo nếu người dùng bấm nhầm nút Reset.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class ResetCommand implements StreamCommand {
 

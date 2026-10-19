@@ -13,7 +13,7 @@ import java.util.Objects;
  * <p>Kết hợp <b>Memento Pattern</b> để lưu trạng thái trước khi thực thi
  * và hỗ trợ tính năng <b>Undo / Step-Back (Lùi lại giao dịch trước)</b>.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class StepNextCommand implements StreamCommand {
 

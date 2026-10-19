@@ -9,7 +9,7 @@ import java.util.*;
  *
  * <p>Mô phỏng nguồn dữ liệu IoT / Thương mại điện tử liên tục với kích thước và phân phối tùy biến.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class SyntheticDatasetFactory extends DatasetLoaderFactory {
 

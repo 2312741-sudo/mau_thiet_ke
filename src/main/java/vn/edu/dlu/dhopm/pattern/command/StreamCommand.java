@@ -7,7 +7,7 @@ package vn.edu.dlu.dhopm.pattern.command;
  * Cho phép tham số hóa các yêu cầu, xếp hàng thực thi (Queuing), ghi nhật ký hoạt động
  * và đặc biệt là hỗ trợ khả năng hoàn tác (Undo / Redo) kết hợp cùng Memento Pattern.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public interface StreamCommand {
 

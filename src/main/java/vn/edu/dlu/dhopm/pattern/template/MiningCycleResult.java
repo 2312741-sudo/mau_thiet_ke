@@ -16,7 +16,7 @@ import java.util.List;
  * @param executionTimeNs     Thời gian thực thi của chu kỳ khai phá tính bằng nanoseconds
  * @param memoryUsedBytes     Dung lượng bộ nhớ RAM xấp xỉ được tiêu thụ tính bằng bytes
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public record MiningCycleResult(
         List<Transaction> batch,

@@ -18,7 +18,7 @@ import vn.edu.dlu.dhopm.pattern.strategy.DecayStrategy;
  * Custom UI Component biểu diễn một Node trong Global DHO-List
  * với giao diện Cyber-Card hiện đại, thanh đo độ chiếm dụng và trạng thái trực quan.
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class DHONodeCard extends VBox {
 

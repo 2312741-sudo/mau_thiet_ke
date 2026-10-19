@@ -1,6 +1,6 @@
 # KIẾN TRÚC THIẾT KẾ PHẦN MỀM: DHOPM EXTENSIBLE STREAM MINING FRAMEWORK
 **Đồ Án Môn Học: Mẫu Thiết Kế (Design Patterns) - Khoa CNTT, Đại Học Đà Lạt**  
-**Sinh viên thực hiện:** Nguyễn Thanh Tâm - **MSSV:** 2312741  
+**Nhóm sinh viên thực hiện:** Võ Công Vinh (2312800) • Nguyễn Đức Tín (2312774) • Ngô Quốc Trường Vĩ (2312796)  
 **Đề tài:** Tái cấu trúc & Mở rộng Bộ Khai Phá Mẫu Độ Chiếm Dụng Cao Suy Giảm Theo Thời Gian Thực (DHOPM - EAAI 2026) theo Chuẩn 23 GoF Design Patterns & Clean Architecture.
 
 ---

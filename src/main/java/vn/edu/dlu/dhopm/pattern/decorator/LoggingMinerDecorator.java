@@ -14,7 +14,7 @@ import java.util.List;
  *
  * <p>Theo dõi luồng xử lý của từng chu kỳ khai phá mà không làm biến đổi logic bên trong đối tượng được bọc.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class LoggingMinerDecorator extends AbstractMinerDecorator {
 

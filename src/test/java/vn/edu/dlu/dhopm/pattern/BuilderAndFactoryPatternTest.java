@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 1. Khởi tạo cấu hình an toàn bằng MiningConfig.Builder với đầy đủ kiểm tra ràng buộc
  * 2. Đa hình trong việc nạp dữ liệu từ các Factory cụ thể (Paper, DB0, Synthetic, CSV, Lab 1 Custom)</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class BuilderAndFactoryPatternTest {
 

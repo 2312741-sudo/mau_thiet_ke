@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Concrete Creator nạp tập dữ liệu khởi tạo ban đầu DB0 (T1..T4) của bài báo DHOPM.
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class DB0DatasetFactory extends DatasetLoaderFactory {
 

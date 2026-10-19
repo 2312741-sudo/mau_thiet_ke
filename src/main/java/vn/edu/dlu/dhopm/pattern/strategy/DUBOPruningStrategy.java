@@ -6,7 +6,7 @@ package vn.edu.dlu.dhopm.pattern.strategy;
  * <p>Quy tắc: Nhánh mẫu X sẽ bị cắt tỉa nếu DUBO(X) &lt; minSup.
  * Vì tính chất đơn điệu của DUBO đảm bảo không có mẫu mở rộng nào của X có thể đạt minSup.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class DUBOPruningStrategy implements PruningStrategy {
 

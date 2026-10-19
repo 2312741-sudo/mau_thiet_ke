@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Bo kiem thu tu dong xac thuc 100% ket qua giua chuong trinh Java (Lab 2)
  * va ket qua tinh toan chay tay trong file DHOPM_TestCases.xlsx (Lab 1).
  *
- * Sinh vien: Nguyen Thanh Tam - MSSV: 2312741
+ * Sinh vien: Vo Cong Vinh (2312800), Nguyen Duc Tin (2312774), Ngo Quoc Truong Vi (2312796)
  * Truong: Dai Hoc Da Lat (DLU) - Khoa Cong Nghe Thong Tin
  */
 public class Lab1VerificationTest {

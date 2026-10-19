@@ -6,7 +6,7 @@ package vn.edu.dlu.dhopm.pattern.state;
  * <p>Hệ thống đã nạp dữ liệu ban đầu và sẵn sàng nhận lệnh từ người dùng.
  * Cho phép Bắt đầu luồng, Bơm từng bước đơn lẻ, hoặc Khôi phục ban đầu.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class IdleState implements StreamState {
 

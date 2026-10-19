@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 2. Tính năng kiểm soát nút bấm an toàn theo trạng thái
  * 3. Điểm truy cập duy nhất StreamMiningFacade che giấu độ phức tạp cho Client/UI</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class StateAndFacadePatternTest {
 

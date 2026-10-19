@@ -1,6 +1,6 @@
 # KỊCH BẢN THUYẾT TRÌNH & DEMO ĐỒ ÁN GIỮA KỲ (5 PHÚT)
 **Học phần:** Mẫu Thiết Kế (Design Patterns) - Khoa CNTT, Đại Học Đà Lạt  
-**Sinh viên trình bày:** Nguyễn Thanh Tâm - **MSSV:** 2312741  
+**Nhóm sinh viên thực hiện:** Võ Công Vinh (2312800) • Nguyễn Đức Tín (2312774) • Ngô Quốc Trường Vĩ (2312796)  
 **Đề tài:** Tái cấu trúc Bộ Khai Phá Luồng DHOPM thành **Extensible Stream Mining Framework** với 10 GoF Patterns & Clean Architecture.
 
 ---
@@ -26,7 +26,7 @@
 ## 🎙️ LỜI THOẠI MẪU CHO TỪNG PHÚT (SPEAKER SCRIPT)
 
 ### Phút 0:00 - 1:00: Mở đầu & Kiến trúc
-> *"Kính thưa Thầy/Cô trong Hội đồng, em tên là Nguyễn Thanh Tâm, MSSV 2312741.  
+> *"Kính thưa Thầy/Cô trong Hội đồng, nhóm em gồm các thành viên: Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796).  
 > Trong đồ án giữa kỳ này, em đã tái cấu trúc thuật toán khoa học chất lượng cao **DHOPM (EAAI 2026)** thành một **Extensible Stream Mining Framework** áp dụng trọn vẹn **10 Mẫu Thiết Kế GoF**.  
 > Thay vì để giao diện JavaFX gắn chặt với thuật toán, em xây dựng lớp **`StreamMiningFacade`** làm điểm truy cập duy nhất, áp dụng **Builder Pattern** cho `MiningConfig` và **Factory Method** để nạp dữ liệu đa nguồn. Toàn bộ mã nguồn tuân thủ triệt để nguyên lý SOLID."*
 

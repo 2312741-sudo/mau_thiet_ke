@@ -15,7 +15,7 @@ import java.util.Objects;
  * tự kiểm tra tính hợp lệ (Validation) tại thời điểm khởi tạo,
  * đồng thời loại bỏ lỗi truyền sai thứ tự tham số (Telescoping Constructor Anti-pattern).</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public final class MiningConfig {
 

@@ -12,7 +12,7 @@ import java.util.List;
  *
  * <p>Theo dõi thời gian thực thi, mức tiêu hao RAM và tỷ lệ cắt tỉa qua từng chu kỳ để phục vụ phân tích so sánh.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class BenchmarkMetricsObserver implements MiningObserver {
 

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Concrete Observer ghi lại nhật ký kiểm toán (Audit Trail) của toàn bộ hoạt động luồng và khai phá.
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class AuditLogObserver implements StreamObserver, MiningObserver {
 

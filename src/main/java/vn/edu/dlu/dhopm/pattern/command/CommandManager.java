@@ -12,7 +12,7 @@ import java.util.List;
  * <p>Quản lý ngăn xếp lịch sử thực thi (Undo Stack và Redo Stack), điều phối
  * việc thực thi lệnh và hoàn tác giao dịch trên luồng dữ liệu.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class CommandManager {
 

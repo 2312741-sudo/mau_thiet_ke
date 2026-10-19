@@ -7,7 +7,7 @@ package vn.edu.dlu.dhopm.pattern.state;
  * Khóa các nút Bắt đầu, Tạm dừng và Bước tiếp theo.
  * Chỉ cho phép người dùng bấm Khôi phục (Reset) để nạp lại nguồn dữ liệu mới.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class CompletedState implements StreamState {
 

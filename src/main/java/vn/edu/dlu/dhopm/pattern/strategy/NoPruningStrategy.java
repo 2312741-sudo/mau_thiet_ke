@@ -7,7 +7,7 @@ package vn.edu.dlu.dhopm.pattern.strategy;
  * Dùng làm đường cơ sở (baseline) trong các thử nghiệm Benchmark
  * để chứng minh hiệu quả giảm không gian tìm kiếm vượt trội của cận trên DUBO.</p>
  *
- * @author Nguyen Thanh Tam - MSSV: 2312741
+ * @author Võ Công Vinh (2312800), Nguyễn Đức Tín (2312774), Ngô Quốc Trường Vĩ (2312796)
  */
 public class NoPruningStrategy implements PruningStrategy {
 
