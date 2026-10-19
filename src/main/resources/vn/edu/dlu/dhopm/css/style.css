@@ -3,6 +3,15 @@
 /* Designed for GoF Design Patterns Project - Da Lat University               */
 /* ========================================================================== */
 
+.root {
+    -fx-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -fx-font-smoothing-type: gray;
+    -fx-base: #0f172a;
+    -fx-background: #090d16;
+    -fx-control-inner-background: #0f172a;
+    -fx-text-fill: #f8fafc;
+}
+
 .root-pane {
     -fx-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -fx-background-color: #090d16;
@@ -150,19 +159,20 @@
 
 .field-label {
     -fx-font-size: 11px;
-    -fx-text-fill: #cbd5e1;
-    -fx-font-weight: 700;
+    -fx-text-fill: #f1f5f9;
+    -fx-font-weight: 800;
 }
 
 .field-label-sub {
     -fx-font-size: 10px;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-weight: 600;
 }
 
 .field-label-bold {
     -fx-font-size: 11px;
     -fx-font-weight: 800;
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: #ffffff;
 }
 
 .field-value-highlight {
@@ -174,13 +184,17 @@
 .field-value-sub {
     -fx-font-size: 11px;
     -fx-font-weight: 800;
-    -fx-text-fill: #cbd5e1;
+    -fx-text-fill: #e2e8f0;
 }
 
 .help-text {
     -fx-font-size: 10px;
-    -fx-text-fill: #64748b;
-    -fx-font-style: italic;
+    -fx-text-fill: #94a3b8;
+    -fx-font-weight: 600;
+}
+
+:disabled {
+    -fx-opacity: 0.75;
 }
 
 /* ========================================================================== */
@@ -382,24 +396,73 @@
 /* ========================================================================== */
 /* FORM CONTROLS & COMBOBOX                                                   */
 /* ========================================================================== */
+.combo-box,
 .combo-box-custom {
     -fx-background-color: #1e293b;
-    -fx-border-color: #334151;
+    -fx-border-color: #38bdf8;
+    -fx-border-width: 1;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
     -fx-font-size: 11px;
     -fx-font-weight: 600;
 }
+
+.combo-box:hover,
+.combo-box-custom:hover {
+    -fx-border-color: #0ea5e9;
+    -fx-effect: dropshadow(three-pass-box, rgba(56, 189, 248, 0.25), 6, 0, 0, 1);
+}
+
+.combo-box .list-cell,
 .combo-box-custom .list-cell {
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-background-color: transparent;
+    -fx-padding: 4 8 4 8;
 }
-.combo-box-custom .combo-box-popup .list-view {
-    -fx-background-color: #1e293b;
-    -fx-border-color: #334151;
+
+.combo-box .arrow-button,
+.combo-box-custom .arrow-button {
+    -fx-background-color: transparent;
 }
-.combo-box-custom .combo-box-popup .list-cell:hover {
-    -fx-background-color: #2563eb;
+
+.combo-box .arrow,
+.combo-box-custom .arrow {
+    -fx-background-color: #38bdf8;
+}
+
+/* COMBOBOX POPUP DROPDOWN (RẤT QUAN TRỌNG ĐỂ CHỮ KHÔNG BỊ MỜ TRÊN WINDOWS) */
+.combo-box-popup .list-view {
+    -fx-background-color: #0f172a;
+    -fx-background-insets: 0;
+    -fx-padding: 4;
+    -fx-border-color: #0284c7;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.85), 16, 0, 0, 6);
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 11.5px;
+    -fx-font-weight: 600;
+    -fx-padding: 8 12 8 12;
+}
+
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #1e3a8a;
+    -fx-text-fill: #38bdf8;
+    -fx-cursor: hand;
+}
+
+.combo-box-popup .list-cell:filled:selected,
+.combo-box-popup .list-cell:filled:selected:hover {
+    -fx-background-color: #0284c7;
     -fx-text-fill: #ffffff;
+    -fx-font-weight: 700;
 }
 
 .search-field {
@@ -424,6 +487,15 @@
     -fx-pref-height: 12;
     -fx-pref-width: 12;
     -fx-background-radius: 6;
+}
+.slider .axis {
+    -fx-tick-label-fill: #cbd5e1;
+    -fx-font-size: 10px;
+    -fx-font-weight: 600;
+}
+.slider .axis .axis-tick-mark,
+.slider .axis .axis-minor-tick-mark {
+    -fx-stroke: #475569;
 }
 
 /* ========================================================================== */
@@ -534,13 +606,14 @@
 
 .stat-title {
     -fx-font-size: 11px;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-weight: 700;
 }
 
 .stat-val {
     -fx-font-size: 11px;
     -fx-font-weight: 800;
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: #f1f5f9;
 }
 
 .stat-val-dhop {
@@ -575,8 +648,9 @@
 
 .entries-label {
     -fx-font-family: "SF Mono", Menlo, Consolas, monospace;
-    -fx-font-size: 10px;
-    -fx-text-fill: #64748b;
+    -fx-font-size: 10.5px;
+    -fx-text-fill: #94a3b8;
+    -fx-font-weight: 600;
 }
 
 /* ========================================================================== */
