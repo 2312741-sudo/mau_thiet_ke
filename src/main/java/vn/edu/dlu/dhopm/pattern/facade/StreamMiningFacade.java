@@ -102,6 +102,14 @@ public class StreamMiningFacade implements StreamStateContext {
                 }
             }
         });
+
+        // Kết nối bộ mô phỏng luồng (StreamSimulator) với UI và State Machine
+        this.simulator.setOnTransactionProcessed(tx -> {
+            notifyUI();
+        });
+        this.simulator.setOnStreamCompleted(() -> {
+            setState(new CompletedState());
+        });
     }
 
     /**
@@ -394,7 +402,17 @@ public class StreamMiningFacade implements StreamStateContext {
         simulator.stop();
         engine.reset();
         engine.phase1_constructOrUpdate(dataset);
-        simulator.setStreamQueue(DatasetLoader.getSyntheticStreamDataset());
+
+        List<Transaction> streamQueue = new java.util.ArrayList<>();
+        if (factory instanceof vn.edu.dlu.dhopm.pattern.factory.DB0DatasetFactory) {
+            List<Transaction> paper = DatasetLoader.getPaperDataset();
+            streamQueue.addAll(paper.subList(4, paper.size()));
+            streamQueue.addAll(DatasetLoader.getSyntheticStreamDataset());
+        } else {
+            streamQueue.addAll(DatasetLoader.getSyntheticStreamDataset());
+        }
+        simulator.setStreamQueue(streamQueue);
+
         commandManager.clear();
         setState(new IdleState());
         recalculateAndMine();

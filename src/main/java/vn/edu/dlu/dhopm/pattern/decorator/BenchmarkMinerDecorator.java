@@ -114,8 +114,33 @@ public class BenchmarkMinerDecorator extends AbstractMinerDecorator {
         return peakMemoryBytes;
     }
 
-    private static long getHeapMemoryUsed() {
+    public synchronized double getPeakMemoryKb() {
+        return peakMemoryBytes / 1024.0;
+    }
+
+    /**
+     * Lay dung luong bo nho Heap RAM hien tai dang su dung boi JVM (bytes).
+     */
+    public static long getCurrentHeapMemoryBytes() {
         Runtime rt = Runtime.getRuntime();
         return rt.totalMemory() - rt.freeMemory();
+    }
+
+    /**
+     * Lay dung luong bo nho Heap RAM hien tai dang su dung (MB).
+     */
+    public double getCurrentHeapMemoryMb() {
+        return getCurrentHeapMemoryBytes() / (1024.0 * 1024.0);
+    }
+
+    /**
+     * Lay tong dung luong bo nho Heap RAM duoc cap phat boi JVM (MB).
+     */
+    public double getTotalHeapMemoryMb() {
+        return Runtime.getRuntime().totalMemory() / (1024.0 * 1024.0);
+    }
+
+    private static long getHeapMemoryUsed() {
+        return getCurrentHeapMemoryBytes();
     }
 }

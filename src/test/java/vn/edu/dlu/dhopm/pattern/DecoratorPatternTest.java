@@ -45,6 +45,12 @@ public class DecoratorPatternTest {
         benchmarkDecorator.mine(config);
         assertEquals(2, benchmarkDecorator.getTotalRuns());
         assertTrue(benchmarkDecorator.getAverageExecutionTimeMicros() > 0.0);
+
+        // Kiểm tra số liệu đo lường Live Heap RAM (JVM Heap Telemetry)
+        assertTrue(BenchmarkMinerDecorator.getCurrentHeapMemoryBytes() > 0, "Dung lượng heap bytes phải > 0");
+        assertTrue(benchmarkDecorator.getCurrentHeapMemoryMb() > 0.0, "Dung lượng heap MB phải > 0");
+        assertTrue(benchmarkDecorator.getTotalHeapMemoryMb() > 0.0, "Tổng heap MB phải > 0");
+        assertTrue(benchmarkDecorator.getPeakMemoryKb() >= 0.0, "Đỉnh RAM chu kỳ phải >= 0");
     }
 
     @Test

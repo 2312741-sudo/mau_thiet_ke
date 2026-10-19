@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
 /**
  * Bo gia lap luong du lieu giao dich thoi gian thuc (Data Stream Simulator).
@@ -23,11 +24,22 @@ public class StreamSimulator {
     private ScheduledExecutorService scheduler;
     private final AtomicBoolean isRunning;
 
+    private Consumer<Transaction> onTransactionProcessed;
+    private Runnable onStreamCompleted;
+
     public StreamSimulator(DHOPMEngine engine) {
         this.engine = engine;
         this.pendingStream = new ArrayList<>();
         this.nextIndex = 0;
         this.isRunning = new AtomicBoolean(false);
+    }
+
+    public void setOnTransactionProcessed(Consumer<Transaction> callback) {
+        this.onTransactionProcessed = callback;
+    }
+
+    public void setOnStreamCompleted(Runnable callback) {
+        this.onStreamCompleted = callback;
     }
 
     /**
@@ -52,7 +64,14 @@ public class StreamSimulator {
             return t;
         });
 
-        scheduler.scheduleAtFixedRate(this::stepNext, 500, periodMs, TimeUnit.MILLISECONDS);
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                stepNext();
+            } catch (Throwable t) {
+                System.err.println("Lỗi trong StreamSimulator tick: " + t.getMessage());
+                t.printStackTrace();
+            }
+        }, 300, periodMs, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -76,10 +95,24 @@ public class StreamSimulator {
         if (nextIndex < pendingStream.size()) {
             Transaction t = pendingStream.get(nextIndex++);
             engine.phase1_constructOrUpdate(Collections.singletonList(t));
+            if (onTransactionProcessed != null) {
+                try {
+                    onTransactionProcessed.accept(t);
+                } catch (Exception e) {
+                    System.err.println("Lỗi callback onTransactionProcessed: " + e.getMessage());
+                }
+            }
             return t;
         } else {
             // Khi het du lieu dat san, tu dong dung lai
             stop();
+            if (onStreamCompleted != null) {
+                try {
+                    onStreamCompleted.run();
+                } catch (Exception e) {
+                    System.err.println("Lỗi callback onStreamCompleted: " + e.getMessage());
+                }
+            }
             return null;
         }
     }

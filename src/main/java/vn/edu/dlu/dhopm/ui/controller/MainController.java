@@ -346,7 +346,16 @@ public class MainController implements Initializable {
 
         // 4. Cập nhật thông số từ Benchmark Decorator
         lblBenchmarkTime.setText(String.format("%.1f µs", facade.getBenchmarkDecorator().getLastExecutionTimeMicros()));
-        lblBenchmarkMemory.setText(String.format("%.1f KB", facade.getBenchmarkDecorator().getLastMemoryUsedKb()));
+        double memKb = facade.getBenchmarkDecorator().getLastMemoryUsedKb();
+        double liveHeapMb = facade.getBenchmarkDecorator().getCurrentHeapMemoryMb();
+        lblBenchmarkMemory.setText(String.format("%.1f KB (%.1f MB)", memKb, liveHeapMb));
+        lblBenchmarkMemory.setTooltip(new Tooltip(String.format(
+                "Biến thiên RAM chu kỳ (Decorator Delta): %.2f KB\nĐỉnh tiêu thụ (Peak): %.2f KB\nTổng JVM Heap đang dùng: %.1f MB / %.1f MB",
+                memKb,
+                facade.getBenchmarkDecorator().getPeakMemoryKb(),
+                liveHeapMb,
+                facade.getBenchmarkDecorator().getTotalHeapMemoryMb()
+        )));
 
         // 5. Cập nhật Memento Stack Info
         lblUndoStackInfo.setText("Memento Stack: " + facade.getUndoCount() + " snapshots | Redo: " + facade.getRedoCount());
