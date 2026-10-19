@@ -48,12 +48,13 @@ Dự án áp dụng chặt chẽ 10 Design Patterns GoF vào đúng bài toán k
 
 ## 🚀 4. Hướng Dẫn Biên Dịch & Chạy Ứng Dụng
 
-### Khởi chạy bằng Maven Terminal:
+### Khởi chạy bằng Maven Terminal / PowerShell:
+
+Khi tải về từ GitHub hoặc giải nén file zip, bạn **đã ở ngay trong thư mục dự án** (nơi có file `pom.xml`), **KHÔNG CẦN** gõ `cd dhopm-visualizer`.
+
+Chạy trực tiếp các lệnh sau:
 
 ```bash
-# Di chuyển vào thư mục dự án
-cd dhopm-visualizer
-
 # 1. Chạy toàn bộ 41 Unit Tests (100% PASS)
 mvn test
 
@@ -64,11 +65,13 @@ mvn compile exec:java -Dexec.mainClass="vn.edu.dlu.dhopm.core.Lab1VerificationRu
 mvn javafx:run
 ```
 
-#### 💡 Khởi chạy nhanh bằng script `run.sh`:
-```bash
-chmod +x run.sh
-./run.sh
-```
+#### 💡 Khởi chạy nhanh bằng script 1-click:
+- **Trên Windows:** Nhấp đúp vào file `run.bat` (hoặc mở PowerShell/CMD gõ `.\run.bat`).
+- **Trên macOS / Linux:** Mở Terminal gõ:
+  ```bash
+  chmod +x run.sh
+  ./run.sh
+  ```
 
 ---
 
